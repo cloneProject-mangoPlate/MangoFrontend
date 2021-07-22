@@ -1,4 +1,4 @@
-import config from "../../shared/config";
+// import config from "../../shared/config";
 
 // Action
 const LOG_IN = "LOG_IN";
@@ -11,22 +11,22 @@ const initialState = {
   userinfo: {},
 };
 
-// Middleware
-const logInActionDB = () => {
-  return function (dispatch) {
-      console.log(1);
-    config
-      .get("/api/social/user")
-      .then((res) => {
-        console.log(2);
-        dispatch(logInAction(res.data));
-      })
-      .catch((error) => {
-          console.log(3);
-        console.error(error);
-      });
-  };
-};
+// // Middleware
+// const logInActionDB = () => {
+//   return function (dispatch) {
+//     console.log(1);
+//     config
+//       .get("/api/social/user")
+//       .then((res) => {
+//         console.log(2);
+//         dispatch(logInAction(res.data));
+//       })
+//       .catch((error) => {
+//         console.log(3);
+//         console.error(error);
+//       });
+//   };
+// };
 
 // Reducer
 export default function user(state = initialState, action) {
@@ -39,5 +39,5 @@ export default function user(state = initialState, action) {
 }
 
 export const userActions = {
-    logInActionDB,
+  // logInActionDB,
 };

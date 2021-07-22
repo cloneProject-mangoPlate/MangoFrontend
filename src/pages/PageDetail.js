@@ -16,9 +16,9 @@ const PageDetail = (props) => {
   const detail = useSelector((state) => state);
   console.log(detail);
 
-  // React.useEffect(() => {
-  //   dispatch(shopActions.getStoreDB());
-  // }, []);
+  React.useEffect(() => {
+    dispatch(shopActions.getStoreDB());
+  }, []);
 
   return (
     <React.Fragment>

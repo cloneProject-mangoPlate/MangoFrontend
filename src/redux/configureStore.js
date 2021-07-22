@@ -3,20 +3,20 @@ import thunk from "redux-thunk";
 import { createBrowserHistory } from "history";
 import { connectRouter } from "connected-react-router";
 
-import Users from "./modules/users";
-import User from "./modules/user";
-import Toplists from "./modules/toplists";
 // modules
 import Shop_module from "./modules/Shop_module";
 import Review_module from "./modules/Review_module";
+import Main_module from "./modules/Main_module";
+import TopList_module from "./modules/Toplists_module";
+import Users from "./modules/users";
 
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
   users: Users,
-  user: User,
-  toplists: Toplists,
   shop: Shop_module,
+  topList: TopList_module,
+  main: Main_module,
   review: Review_module,
   router: connectRouter(history),
 });

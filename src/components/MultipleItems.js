@@ -1,126 +1,136 @@
-import React, { Component } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import MainImage from "../elements/MainImage";
+import { history } from "../redux/configureStore";
 
-// import { actionCreators as topActions } from "../redux/modules/toplists";
-// import {connect} from 'react-redux';
-// import { history } from "../redux/configureStore";
-// import { withRouter } from "react-router";
+import { actionCreators as mainActions } from "../redux/modules/Main_module";
+import { useSelector, useDispatch } from "react-redux";
 
-// const mapStateTopProps = (state) => ({
-//   top_list: state.toplists.top_list,
-//   is_loaded: state.toplists.is_loaded
-// });
+const MultipleItems = (props) => {
+  const dispatch = useDispatch();
+  const main_info = useSelector((state) => state.main.main_list);
 
-// const mapDispatchToProps = (dispatch) => ({
-//   load: () => {
-//     dispatch(topActions.getTopDB());
-//   }
-// })
+  React.useEffect(() => {
+    dispatch(mainActions.getMainDB());
+  }, []);
 
-export default class MultipleItems extends Component {
-  
-  // componentDidMount() {
-  //   this.props.load();
-  // }
+  return (
+    <div>
+      <SlideContainer>
+        <Picwrap>
+          <PicList>
+            <PicHeightWrap>
+              <PicLi>
+                <MainImage
+                  key="1359_korean_pub"
+                  src={main_info[0].imgUrl}
+                  _onClick={() => {
+                    history.push(`/top_lists/${main_info[0].keyword}`);
+                    window.scrollTo({ top: 0, left: 0 });
+                  }}
+                ></MainImage>
+              </PicLi>
+              <PicLi>
+                <MainImage
+                  key="2858_anju_cheongdam"
+                  src="https://media.vlpt.us/images/soujinko/post/09a0c7a1-a7ff-42f0-894e-006720c55b7d/5.jpg?w=768"
+                  _onClick={() => {
+                    history.push(`/top_lists/${main_info[1].keyword}`);
+                    window.scrollTo({ top: 0, left: 0 });
+                  }}
+                ></MainImage>
+              </PicLi>
+            </PicHeightWrap>
+            <PicHeightWrap>
+              <PicLi>
+                <MainImage
+                  key="2857_familydinner_seoraevillage"
+                  src="https://media.vlpt.us/images/soujinko/post/c17ceeb5-dc60-442f-a049-dcd49c147760/4.jpg?w=768"
+                  _onClick={() => {
+                    history.push(`/top_lists/${main_info[2].keyword}`);
+                    window.scrollTo({ top: 0, left: 0 });
+                  }}
+                ></MainImage>
+              </PicLi>
+              <PicLi>
+                <MainImage
+                  key="979_fried_chicken"
+                  src="https://media.vlpt.us/images/soujinko/post/ee377476-3f7c-4336-94ba-53f3d88dfac3/3.jpg?w=768"
+                  _onClick={() => {
+                    history.push(`/top_lists/${main_info[3].keyword}`);
+                    window.scrollTo({ top: 0, left: 0 });
+                  }}
+                ></MainImage>
+              </PicLi>
+            </PicHeightWrap>
+            <PicHeightWrap>
+              <PicLi>
+                <MainImage
+                  key="759_jjimdak"
+                  src="https://media.vlpt.us/images/soujinko/post/c95d270d-6745-43d5-9e47-f9ab6fc58544/2.jpg?w=768"
+                  _onClick={() => {
+                    history.push(`/top_lists/${main_info[4].keyword}`);
+                    window.scrollTo({ top: 0, left: 0 });
+                  }}
+                ></MainImage>
+              </PicLi>
+              <PicLi>
+                <MainImage
+                  key="tantannoodle_top5"
+                  src="https://media.vlpt.us/images/soujinko/post/81dd9dc3-c318-4f79-af7a-1f065d873adf/1.jpg?w=768"
+                  _onClick={() => {
+                    history.push(`/top_lists/${main_info[5].keyword}`);
+                    window.scrollTo({ top: 0, left: 0 });
+                  }}
+                ></MainImage>
+              </PicLi>
+            </PicHeightWrap>
+          </PicList>
+        </Picwrap>
+      </SlideContainer>
+    </div>
+  );
+};
 
-  render() {
-
-    const settings = {
-      dots: true,
-      infinite: true,
-      rows: 2,
-      slidesPerRow: 3,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 4000,
-      pauseOnHover: true,
-      draggable: true,
-    };
-
-    return (
-      <div>
-        {/* <h2> Multiple items </h2> */}
-        <SlideContainer>
-          <Slider {...settings}>
-            <SingleSlide>
-              <Title>이것은 제목</Title>
-            </SingleSlide>
-            <SingleSlide>
-              <Title>2</Title>
-            </SingleSlide>
-            <SingleSlide>
-              <Title>3</Title>
-            </SingleSlide>
-            <SingleSlide>
-              <Title>4</Title>
-            </SingleSlide>
-            <SingleSlide>
-              <Title>5</Title>
-            </SingleSlide>
-            <SingleSlide>
-              <Title>6</Title>
-            </SingleSlide>
-            <SingleSlide>
-              <Title>7</Title>
-            </SingleSlide>
-            <SingleSlide>
-              <Title>8</Title>
-            </SingleSlide>
-            <SingleSlide>
-              <Title>9</Title>
-            </SingleSlide>
-            <SingleSlide>
-              <Title>10</Title>
-            </SingleSlide>
-            <SingleSlide>
-              <Title>11</Title>
-            </SingleSlide>
-            <SingleSlide>
-              <Title>12</Title>
-            </SingleSlide>
-            {/* {this.props.top_list.map((l) => {
-          <singleSlide>
-            <Title key={l.id}
-          onClick={() => {
-            history.push(`/top_lists`);
-            window.scrollTo({ top: 0, left: 0 });
-          }}
-          url={l.img_url}>{l.title}</Title>
-          </singleSlide>
-        })} */}
-          </Slider>
-        </SlideContainer>
-        
-      </div>
-    );
-  }
-}
+export default MultipleItems;
 
 const SlideContainer = styled.div`
+  display: block;
+  position: relative;
+  border-top: 1px solid #dbdbdb;
+  padding: 38px 0 36px 0;
   margin-right: -15px;
   margin-left: -15px;
 `;
 
-const Title = styled.div`
-  margin: 15px;
-  height: 236px;
-  background-image: url("https://mangoplate.s3.ap-northeast-2.amazonaws.com/mainimage.jpeg");
+const Picwrap = styled.div`
+  margin: 30px 90px auto;
+  position: relative;
+`;
+
+const PicList = styled.div`
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+`;
+
+const PicHeightWrap = styled.div`
+  max-width: 450px;
+  margin-left: 29px;
+  overflow: hidden;
+  position: relative;
+  display: block;
+`;
+
+const PicLi = styled.li`
+  margin-bottom: 29px;
   background-size: cover;
-  background-repeat: no-repeat;
-  line-height: 100px;
-  color: #ffffff;
-  font-size: 1.8rem;
-  text-shadow: 6px 6px 16px rgb(0 0 0 / 90%);
-  text-align: center;
+  position: relative;
+  border-radius: 3px;
+  background-position: 50% 50%;
+  list-style: none;
 `;
-
-const SingleSlide = styled.div`
-`;
-
-// ${(props) => props.url};
-// export default connect(mapStateTopProps, mapDispatchToProps) (withRouter(MultipleItems));

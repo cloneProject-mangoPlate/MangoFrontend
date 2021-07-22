@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import CreateIcon from "@material-ui/icons/Create";
 import StarOutlineIcon from "@material-ui/icons/StarOutline";
@@ -13,6 +13,12 @@ import { actionCreators as ShopActions } from "../redux/modules/Shop_module";
 
 const StoreDetail = (props) => {
   const dispatch = useDispatch();
+  const one_info = useSelector((state) => state.shop.one_info);
+
+  useEffect(() => {
+    dispatch(ShopActions.getStoreDB());
+  }, []);
+  console.log(one_info);
 
   return (
     <React.Fragment>

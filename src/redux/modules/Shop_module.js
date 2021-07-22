@@ -25,10 +25,8 @@ const getStoreDB = () => {
     dispatch(loading(true));
     axios
       .get(getStoreAPI)
-      // .get(`config.api + "/api/shops/" + ${shopId}`, { withCredentials: true })
       .then((res) => {
-        let info = {};
-        const store = res.data;
+        const store = res.data.shopOne;
         console.log(store);
         let detail = {
           shopName: store.shopName,
@@ -45,7 +43,6 @@ const getStoreDB = () => {
           likes: store.likes,
           rates: store.rates,
         };
-        info.push(detail);
         dispatch(getStore(detail));
       })
       .catch((e) => console.error(e));

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import HeaderMain from "../components/HeaderMain";
 import MultipleItems from "../components/MultipleItems";
@@ -25,7 +25,7 @@ const Main = (props) => {
 
   return (
     <React.Fragment>
-      <HeaderMain/>
+      <HeaderMain />
       <div>
         <MainImg>
           <Container>
@@ -93,7 +93,7 @@ const Section = styled.div`
   position: relative;
   border-top: 1px solid #dbdbdb;
   display: block;
-  margin:  auto;
+  margin: auto;
   width: 85vw;
 `;
 

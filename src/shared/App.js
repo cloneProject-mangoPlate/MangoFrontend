@@ -26,8 +26,8 @@ function App() {
           <Route path="/" exact component={Main} />
           <Route path="/auth" exact component={Main} />
           <Route path="/restaurants" exact component={PageDetail} />
-          <Route path="/reviews/:shop_name" exact component={ReviewWrite} />
-          <Route path="/top_lists" exact component={TopLists} />
+          {/* <Route path="/reviews/:shop_name" exact component={ReviewWrite} /> */}
+          <Route path="/top_lists/:keyword" exact component={TopLists} />
         </ConnectedRouter>
       </BrowserRouter>
     </ReactContainer>
