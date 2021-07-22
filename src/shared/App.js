@@ -12,12 +12,19 @@ import Main from "../pages/Main";
 import TopLists from "../pages/TopLists";
 import ReviewWrite from "../pages/ReviewWrite";
 
+import axios from "axios";
 function App() {
+
+  React.useEffect(()=>{
+    axios.get('http://13.125.79.33/api/social/user').then().catch();
+  }, []);
+
   return (
     <ReactContainer>
       <BrowserRouter>
         <ConnectedRouter history={history}>
           <Route path="/" exact component={Main} />
+          <Route path="/auth" exact component={Main} />
           <Route path="/restaurants" exact component={PageDetail} />
           <Route path="/reviews/:shop_name" exact component={ReviewWrite} />
           <Route path="/top_lists" exact component={TopLists} />

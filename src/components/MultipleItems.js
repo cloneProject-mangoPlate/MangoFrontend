@@ -3,11 +3,29 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-// import TopItem from "./TopItem";
-// import { history } from "../redux/configureStore";
 
+// import { actionCreators as topActions } from "../redux/modules/toplists";
+// import {connect} from 'react-redux';
+// import { history } from "../redux/configureStore";
+// import { withRouter } from "react-router";
+
+// const mapStateTopProps = (state) => ({
+//   top_list: state.toplists.top_list,
+//   is_loaded: state.toplists.is_loaded
+// });
+
+// const mapDispatchToProps = (dispatch) => ({
+//   load: () => {
+//     dispatch(topActions.getTopDB());
+//   }
+// })
 
 export default class MultipleItems extends Component {
+  
+  // componentDidMount() {
+  //   this.props.load();
+  // }
+
   render() {
 
     const settings = {
@@ -65,8 +83,19 @@ export default class MultipleItems extends Component {
             <SingleSlide>
               <Title>12</Title>
             </SingleSlide>
+            {/* {this.props.top_list.map((l) => {
+          <singleSlide>
+            <Title key={l.id}
+          onClick={() => {
+            history.push(`/top_lists`);
+            window.scrollTo({ top: 0, left: 0 });
+          }}
+          url={l.img_url}>{l.title}</Title>
+          </singleSlide>
+        })} */}
           </Slider>
         </SlideContainer>
+        
       </div>
     );
   }
@@ -90,4 +119,8 @@ const Title = styled.div`
   text-align: center;
 `;
 
-const SingleSlide = styled.div``;
+const SingleSlide = styled.div`
+`;
+
+// ${(props) => props.url};
+// export default connect(mapStateTopProps, mapDispatchToProps) (withRouter(MultipleItems));

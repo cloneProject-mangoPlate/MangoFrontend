@@ -4,6 +4,8 @@ import Modal from '@material-ui/core/Modal';
 import styled from "styled-components";
 import { Autorenew } from '@material-ui/icons';
 
+import { history } from "../redux/configureStore";
+
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
@@ -51,10 +53,19 @@ export default function SimpleModal() {
   const handleOpen = () => {
     setOpen(true);
   };
-
+  
   const handleClose = () => {
     setOpen(false);
   };
+  const authorization =  () => {
+    Promise.resolve()
+      .then(() => {
+        return (window.location.href = 'http://13.125.79.33/api/social/kakao'); 
+      })
+      .then(() => {
+        return history.replace('/auth');
+      });
+    };
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
@@ -64,7 +75,7 @@ export default function SimpleModal() {
         로그인 하면 가고싶은 식당을<br/>저장할 수 있어요
       </p>
       <div>
-      <KakaoLogin onClick={() => window.location.href='https://www.ui4u.go.kr/depart/img/content/sub03/img_con03030100_01.jpg'}/>
+      <KakaoLogin onClick={authorization}/>
       </div>
       </Wrapper>
     </div>

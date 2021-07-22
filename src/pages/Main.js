@@ -2,10 +2,27 @@ import React from "react";
 import styled from "styled-components";
 import HeaderMain from "../components/HeaderMain";
 import MultipleItems from "../components/MultipleItems";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 
+import { useDispatch } from "react-redux";
+import { userActions } from "../redux/modules/users";
+
+// 메인 페이지 방문하자마자 ajax 요청 실행
+// import axios from "axios";
+
 const Main = (props) => {
+  const dispatch = useDispatch();
+  const path = useLocation().pathname;
+  React.useEffect(()=>{
+    console.log(1);
+    if (path.includes('/auth')) {
+      console.log(2);
+      dispatch(userActions.logInActionDB());
+    } 
+    console.log(3);
+  },[]);
+
   return (
     <React.Fragment>
       <HeaderMain/>
@@ -161,7 +178,7 @@ const Button = styled.button`
   border: 5px solid #ff7100;
   box-sizing: border-box;
   width: 180px;
-  height: 57px;
+  height: 58px;
   border-radius: 50px;
   font-size: 22px;
   font-weight: bold;
